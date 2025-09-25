@@ -1,0 +1,78 @@
+// LOCALHOST
+
+// CARS
+### GET all cars
+GET http://localhost:3000/cars
+
+### GET single car by ID
+GET http://localhost:3000/cars/68d4c5af7467b67a8d225281
+
+### POST Create new car
+POST http://localhost:3000/cars HTTP/1.1
+Content-Type: application/json
+
+{
+    "make": "Honda",
+    "model": "Civic",
+    "year": "1990",
+    "color": "blue",
+    "cylinders": "4",
+    "transmission": "automatic",
+    "price": 25000
+}
+
+### PUT Car
+PUT http://localhost:3000/cars/68c781642a9f96cccee9078f HTTP/1.1
+Content-Type: application/json
+
+{
+    "make": "Honda",
+    "model": "Civic",
+    "year": "1990",
+    "color": "blue",
+    "cylinders": "4",
+    "transmission": "automatic",
+    "price": 55000
+}
+
+### DELETE Car
+DELETE http://localhost:3000/cars/68c8e2128fc2d5951ecbe383 HTTP/1.1
+Content-Type: application/json
+
+
+// MOVIES
+### GET all movies
+GET http://localhost:3000/movies
+
+### GET single movie by ID
+GET http://localhost:3000/movies/68c781272a9f96cccee9078e
+
+### POST Create new movie
+POST http://localhost:3000/movies HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Little Mermaid",
+    "releaseYear": "1989",
+    "genre": "Animation",
+    "director": "Ron Clements",
+    "duration": 83,
+    "rating": "G"
+}
+
+### PUT Movie
+PUT http://localhost:3000/movies/68c781642a9f96cccee9078f HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Little Mermaid",
+    "releaseYear": "1989",
+    "genre": "Animation",
+    "director": "Ron Clements",
+    "duration": 100,
+    "rating": "G"
+}
+
+### DELETE Movie
+DELETE http://localhost:3000/movies/68c8e2128fc2d5951ecbe383 HTTP/1.1
+Content-Type: application/json
