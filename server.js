@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongodb = require('./data/database');
+const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
 const app = express();
 
 const port = process.env.PORT || 3000;
@@ -16,6 +17,8 @@ app.use((req, res, next) => {
   next();
 });
 app.use('/', require('./routes'));
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 mongodb.initDb((err) => {
   if (err) {
