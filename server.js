@@ -32,6 +32,13 @@ app.use(cors({ methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'] }));
 app.use(cors({ origin: '*' }));
 
 app.get('/', (req, res) => { res.send(req.session.user !== undefined ? `Logged in as ${req.session.user.displayName}` : "Logged out")});
+app.get('/github/callback', passport.authenticate('github', {
+  failureRedirect: '/api-docs', session: false }),
+  (req, res) => {
+    req.session.user = req.user;
+    res.redirect('/');
+  }
+);
 
 app.use('/', require('./routes/index.js'));
 app.use(notFoundHandler);
@@ -54,14 +61,6 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((obj, done) => {
   done(null, obj);
 });
-
-app.get('/github/callback', passport.authenticate('github', {
-  failureRedirect: '/api-docs', session: false }),
-  (req, res) => {
-    req.session.user = req.user;
-    res.redirect('/');
-  }
-);
 
 mongodb.initDb((err) => {
   if (err) {
